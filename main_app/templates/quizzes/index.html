@@ -3,6 +3,7 @@
 
 <h1>Quiz List</h1>
 
+{% for quiz in quizzes %}
 <div class="card">
     {% comment %} TODO: change to url template tags {% endcomment %}
     <a href="/quiz/{{ quiz.id }}">
@@ -12,5 +13,6 @@
         </div>
     </a>
 </div>
+{% endfor %}
 
 {% endblock %}

@@ -21,7 +21,8 @@ def about(request):
 
 #view function for route '/quizzes'
 def quizzes_index(request):
-    return render(request, 'quizzes/index.html')
+    quizzes = Quiz.objects.all()
+    return render(request, 'quizzes/index.html', {'quizzes': quizzes})
 
 ##  CLASS-BASED VIEW FUNCTIONS  ##
 
