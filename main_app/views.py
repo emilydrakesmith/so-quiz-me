@@ -3,8 +3,9 @@
 # import render function
 from django.shortcuts import render
 
-# import list functionality for data models
+# import class-based functionalities for data models
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # import data models for class-based views
 from .models import Quiz
@@ -26,6 +27,12 @@ def quizzes_index(request):
 
 ##  CLASS-BASED VIEW FUNCTIONS  ##
 
-# class-based view for quizzes
-class QuizList(ListView):
+# class-based view for creating quizzes
+class QuizCreate(CreateView):
     model = Quiz
+    fields = ['title', 'description']
+
+    # # TODO: figure out what this does
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user
+    #     return super().form_valid(form)

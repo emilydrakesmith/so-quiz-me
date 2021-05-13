@@ -6,7 +6,7 @@
 {% for quiz in quizzes %}
 <div class="card">
     {% comment %} TODO: change to url template tags {% endcomment %}
-    <a href="/quiz/{{ quiz.id }}">
+    <a href="/quizzes/{{ quiz.id }}">
         <div class="card-content">
             <span class="card-title">{{ quiz.title }}</span>
             <p>Description: {{ quiz.description }}</p>
