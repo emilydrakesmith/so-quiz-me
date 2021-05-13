@@ -41,3 +41,11 @@ class QuizCreate(CreateView):
     # def form_valid(self, form):
     #     form.instance.user = self.request.user
     #     return super().form_valid(form)
+
+class QuizUpdate(UpdateView):
+    model = Quiz
+    fields = ['description']    # exclude fields to protect from being updated
+
+class QuizDelete(DeleteView):
+    model = Quiz
+    success_url = '/quizzes/'

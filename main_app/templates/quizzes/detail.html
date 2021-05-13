@@ -8,6 +8,10 @@
         <span class="card-title">{{quiz.title}}</span>
         <p>Description: {{ quiz.description }}</p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'quiz_update' quiz.id %}">Edit</a>
+        <a href="{% url 'quiz_delete' quiz.id %}">Delete</a>
+    </div>
 </div>
 
 <a href="{% url 'quizzes' %}">Return to Quizzes</a>
