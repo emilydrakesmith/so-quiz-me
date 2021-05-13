@@ -20,10 +20,15 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-#view function for route '/quizzes'
+# view function for route '/quizzes'
 def quizzes_index(request):
     quizzes = Quiz.objects.all()
     return render(request, 'quizzes/index.html', {'quizzes': quizzes})
+
+# view function for route '/quiz/<quiz.id>
+def quiz_detail(request, quiz_id):
+    quiz = Quiz.objects.get(id=quiz_id)
+    return render(request, 'quizzes/detail.html', {'quiz': quiz})
 
 ##  CLASS-BASED VIEW FUNCTIONS  ##
 

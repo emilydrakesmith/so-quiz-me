@@ -20,5 +20,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
 
     path('quizzes/', views.quizzes_index, name='quizzes'),
-    path('quizzes/create/', views.QuizCreate.as_view(), name='quizzes_create')
+    path('quizzes/<int:quiz_id>/', views.quiz_detail, name='quiz_detail'),
+    path('quizzes/create/', views.QuizCreate.as_view(), name='quiz_create')
 ]
