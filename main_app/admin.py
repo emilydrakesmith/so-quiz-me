@@ -4,7 +4,8 @@
 from django.contrib import admin
 
 # import data models to access in admin portal
-from .models import Quiz
+from .models import Quiz, Question
 
 ## REGISTER DATA MODELS  ##
 admin.site.register(Quiz)
+admin.site.register(Question)

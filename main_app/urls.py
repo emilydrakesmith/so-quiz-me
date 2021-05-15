@@ -12,7 +12,7 @@ from . import views             # import view functions
 #               no leading slash, must use trailing slash
 #      2nd arg: call the function imported from views.py file
 #               use .as_view() if the function is a class-based view
-#      3rd arg: assign a name to the pathway for reverse() in form submits
+#      3rd arg: assign a name to the pathway for reverse() in form submits and URL block
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -24,4 +24,6 @@ urlpatterns = [
     path('quizzes/<int:quiz_id>/', views.quiz_detail, name='quiz_detail'),
     path('quizzes/<int:pk>/update/', views.QuizUpdate.as_view(), name='quiz_update'),
     path('quizzes/<int:pk>/delete/', views.QuizDelete.as_view(), name='quiz_delete'),
+
+    path('quizzes/<int:quiz_id>/question_create', views.add_question, name='question_create')
 ]

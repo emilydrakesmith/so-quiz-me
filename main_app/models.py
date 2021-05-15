@@ -8,7 +8,7 @@ from django.urls import reverse     # allows reverse-redirect on form submission
 class Quiz(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(max_length=300)
-    question_count = models.IntegerField(default=0)
+    question_count = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     # TODO: add a slug for URL path generation (icebox)
@@ -23,3 +23,19 @@ class Quiz(models.Model):
     
     def get_absolute_url(self):
         return reverse('quiz_detail', kwargs={'quiz_id': self.id})   # set redirect on form submit
+
+class Question(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    answer_count = models.PositiveIntegerField(default=1)
+    question_text = models.TextField(max_length=800)
+
+    def __str__(self):
+        return self.question_text
+
+class Answer(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer_text = models.TextField(max_length=800)
+    is_correct = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.answer_text
