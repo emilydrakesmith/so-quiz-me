@@ -58,9 +58,9 @@ class QuizDelete(DeleteView):
 
 # form to add a new question
 def add_question(request, quiz_id):
-    form = QuestionForm(request.POST)               # serve the add question for to the user
-    if form.is_valid():                             # perform form validation
-        new_question = form.save(commit=False)      # get data submitted without sending it to the database 
-        new_question.quiz_id = quiz_id              # add the quiz_id value as a foreign key
-        new_question.save()                         # send the completed form to the database
-    return redirect('quiz_detail', quiz_id=quiz_id)      # redirect user to  quiz detail page
+    form = QuestionForm(request.POST)                   # serve the add question for to the user
+    if form.is_valid():                                 # perform form validation
+        new_question = form.save(commit=False)          # get data submitted without sending it to the database 
+        new_question.quiz_id = quiz_id                  # add the quiz_id value as a foreign key
+        new_question.save()                             # send the completed form to the database
+    return redirect('quiz_detail', quiz_id=quiz_id)     # redirect user to  quiz detail page

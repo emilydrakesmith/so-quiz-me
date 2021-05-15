@@ -24,6 +24,9 @@ class Quiz(models.Model):
     def get_absolute_url(self):
         return reverse('quiz_detail', kwargs={'quiz_id': self.id})   # set redirect on form submit
 
+    def question_bank(self):
+        return self.question_set.filter()
+
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     answer_count = models.PositiveIntegerField(default=1)

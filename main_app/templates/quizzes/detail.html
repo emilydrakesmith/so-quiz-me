@@ -14,9 +14,25 @@
         <a href="{% url 'quiz_update' quiz.id %}">Edit</a>
         <a href="{% url 'quiz_delete' quiz.id %}">Delete</a>
     </div>
-    <div>
-        
-    </div>
+    
+    {% if quiz.question_set.all %}
+        <table class="striped">
+            <thead>
+                <tr><th>#</th><th>Question</th></tr>
+            </thead>
+            <tbody>
+                {% for question in quiz.question_set.all %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{question}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h4>This quiz does not have any questions yet.</h4>
+    {% endif %}
+
     <form action="{% url 'question_create' quiz.id %}" method='post'>
         {% csrf_token %}
         {{ question_form.as_p }}
