@@ -9,6 +9,8 @@
         <p>Description: {{ quiz.description }}</p>
         <p>Created at: {{quiz.created_at}}</p>
         <p>Updated: {{quiz.created_at}}</p>
+        
+        <a href="{% url 'take_quiz' quiz.id %}">Start Quiz</a>
     </div>
     <div class="card-action">
         <a href="{% url 'quiz_update' quiz.id %}">Edit</a>

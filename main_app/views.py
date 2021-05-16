@@ -80,3 +80,7 @@ def add_answer(request, question_id):
         new_answer.question_id = question_id                        # add the quiz_id value as a foreign key
         new_answer.save()                                           # send the completed form to the database
     return redirect('question_detail', question_id=question_id)     # redirect user to  quiz detail page
+
+def take_quiz(request, quiz_id):
+    quiz = Quiz.objects.get(id=quiz_id)
+    return render(request, 'quizzes/take_quiz.html', {'quiz': quiz})
