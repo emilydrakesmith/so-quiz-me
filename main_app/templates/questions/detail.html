@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4>Question</h4><br><h5>{{question}}</h5>
+
+    {% if question.answer_set.all %}
+        <table class="striped">
+            <thead>
+                <tr><th>#</th><th>Answer</th></tr>
+            </thead>
+            <tbody>
+                {% for answer in question.answer_set.all %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{answer}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h4>This question does not have any answer choices yet.</h4>
+    {% endif %}
+
+{% comment %} TODO: Figure out how top make the below work {% endcomment %}
+{% comment %} <a href="{% url 'quizzes' question.quiz %}">Return to Quiz</a> {% endcomment %}
+{% endblock %}

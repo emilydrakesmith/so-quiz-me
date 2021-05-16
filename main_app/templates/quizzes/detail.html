@@ -24,7 +24,7 @@
                 {% for question in quiz.question_set.all %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{question}}</td>
+                    <td>{{question}} <a href="{% url 'question_detail' question.id %}">View Question Details</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

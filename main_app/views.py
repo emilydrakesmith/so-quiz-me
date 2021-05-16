@@ -36,6 +36,14 @@ def quiz_detail(request, quiz_id):
     question_form = QuestionForm()
     return render(request, 'quizzes/detail.html', {'quiz': quiz, 'question_form': question_form})
 
+# view function for route '/quiz/<question.id>
+def question_detail(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'questions/detail.html', {'question': question})
+
+
+
+
 ##  CLASS-BASED VIEW FUNCTIONS  ##
 
 # class-based view for creating quizzes
