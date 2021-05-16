@@ -11,7 +11,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Quiz, Question, Answer
 
 # import input form models
-from .forms import QuestionForm
+from .forms import QuestionForm, AnswerForm
 
 ##  RENDER VIEW FUNCTIONS  ##
 
@@ -31,15 +31,14 @@ def quizzes_index(request):
 # view function for route '/quiz/<quiz.id>
 def quiz_detail(request, quiz_id):
     quiz = Quiz.objects.get(id=quiz_id)
-    # TODO: Use foreign key on Questions model to get questions for a quiz
-    #questions = Quiz.questions.get()
     question_form = QuestionForm()
     return render(request, 'quizzes/detail.html', {'quiz': quiz, 'question_form': question_form})
 
 # view function for route '/quiz/<question.id>
 def question_detail(request, question_id):
     question = Question.objects.get(id=question_id)
-    return render(request, 'questions/detail.html', {'question': question})
+    answer_form = AnswerForm()
+    return render(request, 'questions/detail.html', {'question': question, 'answer_form': answer_form})
 
 
 
@@ -72,3 +71,12 @@ def add_question(request, quiz_id):
         new_question.quiz_id = quiz_id                  # add the quiz_id value as a foreign key
         new_question.save()                             # send the completed form to the database
     return redirect('quiz_detail', quiz_id=quiz_id)     # redirect user to  quiz detail page
+
+# form to add a new answer
+def add_answer(request, question_id):
+    form = AnswerForm(request.POST)                               # serve the add question for to the user
+    if form.is_valid():                                             # perform form validation
+        new_answer = form.save(commit=False)                        # get data submitted without sending it to the database 
+        new_answer.question_id = question_id                        # add the quiz_id value as a foreign key
+        new_answer.save()                                           # send the completed form to the database
+    return redirect('question_detail', question_id=question_id)     # redirect user to  quiz detail page
