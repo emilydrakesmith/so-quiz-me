@@ -2,8 +2,7 @@
 {% block content %}
 
 <h4><p>Current Quiz: {{quiz.title}}</p></h4>
-<p>There are {{quiz.question_set.all|length}} questions on this quiz.<p>
-<p>[[Directions]]</p>
+<p>Question Count: {{quiz.question_set.all|length}}<p>
 
 {% for question in quiz.question_set.all %}
     <div class="card">

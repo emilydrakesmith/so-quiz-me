@@ -34,10 +34,21 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
+IS_IT_CORRECT = (
+    ('C', 'Correct'),
+    ('N', 'Not Correct')
+)
+
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_text = models.TextField(max_length=800)
-    is_correct = models.BooleanField(default=False)
+    is_correct = models.BooleanField(default=False)  # deprecated do not remove or delete is_correct
+    correct_answer = models.CharField(
+        max_length=1,
+        choices=IS_IT_CORRECT,
+        default=IS_IT_CORRECT[0][0],
+    )
 
     def __str__(self):
         return self.answer_text
+

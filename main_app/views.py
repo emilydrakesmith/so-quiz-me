@@ -88,7 +88,7 @@ def add_question(request, quiz_id):
 # form to add a new answer
 @login_required
 def add_answer(request, question_id):
-    form = AnswerForm(request.POST)                               # serve the add question for to the user
+    form = AnswerForm(request.POST)                                 # serve the add question for to the user
     if form.is_valid():                                             # perform form validation
         new_answer = form.save(commit=False)                        # get data submitted without sending it to the database 
         new_answer.question_id = question_id                        # add the quiz_id value as a foreign key

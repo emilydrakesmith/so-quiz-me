@@ -17,14 +17,19 @@
             </tbody>
         </table>
     {% else %}
-        <h4>This question does not have any answer choices yet.</h4>
+        <br><h6>This question does not have any answer choices yet. Please add one:</h6>
     {% endif %}
     <form action="{% url 'answer_create' question.id %}" method='post'>
         {% csrf_token %}
         {{ answer_form.as_p }}
+        {{ form.answer_choice }}
+        <p>
+            <select class='browser-default' name="correct_answer" id="id_correct_answer">
+                <option value="C" selected>Correct</option>
+                <option value="N">Not Correct</option>
+            </select>
+        </p>
         <input type="submit" class="btn" value="Add Answer Choice">
     </form>
 
-{% comment %} TODO: Figure out how top make the below work {% endcomment %}
-{% comment %} <a href="{% url 'quizzes' question.quiz %}">Return to Quiz</a> {% endcomment %}
 {% endblock %}
