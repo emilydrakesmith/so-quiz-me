@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h4>Question</h4><br><h5>{{question}}</h5>
+<h4>Question</h4><h5>{{question}}</h5>
 
     {% if question.answer_set.all %}
         <table class="striped">
@@ -31,5 +31,6 @@
         </p>
         <input type="submit" class="btn" value="Add Answer Choice">
     </form>
-
+    <br>
+<a href="{% url 'quiz_detail' question.quiz_id %}">Return to Questions</a>
 {% endblock %}
