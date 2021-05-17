@@ -11,16 +11,16 @@ Deployed App on Heroku (in progress)
 # Screenshots
 
 **Quizzes Index Page**
-![quizzes index page](main_app/static/images/Screen Shot 2021-05-17 at 8.26.36 AM.png)
+![quizzes index page](main_app/static/images/quiz_index.png)
 
 **New Quiz Creation Page**
-![new quiz creation page](main_app/static/images/Screen Shot 2021-05-17 at 8.27.14 AM.png)
+![new quiz creation page](main_app/static/images/make_quiz.png)
 
 **Quiz Details Page**
-![quiz details page](main_app/static/images/Screen Shot 2021-05-17 at 8.27.50 AM.png)
+![quiz details page](main_app/static/images/quiz_details.png)
 
 **Question Details Page**
-![question details page](main_app/static/images/Screen Shot 2021-05-17 at 8.28.09 AM.png)
+![question details page](main_app/static/images/answer_details.png)
 
 # Technologies Used
 
