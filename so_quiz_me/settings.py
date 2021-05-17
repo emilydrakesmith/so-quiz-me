@@ -119,3 +119,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/quizzes/'    # redirect on successful login
+LOGOUT_REDIRECT_URL = '/'           # redirect on logout
