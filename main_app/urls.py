@@ -29,5 +29,7 @@ urlpatterns = [
 
     path('question/<int:question_id>/', views.question_detail, name='question_detail'),
     path('quizzes/<int:quiz_id>/question_create/', views.add_question, name='question_create'),
-    path('question/<int:question_id>/answer_create/', views.add_answer, name='answer_create')
+    path('question/<int:question_id>/answer_create/', views.add_answer, name='answer_create'),
+
+    path('accounts/signup/', views.signup, name='signup')
 ]
