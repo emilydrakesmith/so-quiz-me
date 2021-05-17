@@ -1,6 +1,7 @@
 ##  IMPORT STATEMENTS  ##
-from django.db import models        # allows model creation
-from django.urls import reverse     # allows reverse-redirect on form submissions
+from django.db import models                    # allows model creation
+from django.urls import reverse                 # allows reverse-redirect on form submissions
+from django.contrib.auth.models import User     # allows data for user model for auth
 
 ##  DATA MODELS  ##
 
@@ -11,6 +12,7 @@ class Quiz(models.Model):
     question_count = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     # TODO: add a slug for URL path generation (icebox)
 
     class Meta:
